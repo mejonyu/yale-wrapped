@@ -1,0 +1,49 @@
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: 'Nunito', sans-serif; /* Updated font family */
+}
+
+.bg-color {
+  background-color: #ADD8E6; /* Light Blue Background */
+  height: 100%; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.content-box {
+  background-color: #0000FF; /* Blue Box */
+  padding: 20px;
+  border-radius: 5px;
+  color: white; /* White Text */
+  font-size: 20px;
+  max-width: 50%; /* Max width of the content box */
+  margin: auto; /* Centering the box */
+}
+
+.title {
+  font-size: 40px; /* Adjust the size as needed to match the design */
+  font-weight: bold; /* Assuming the title is bold */
+  color: white;
+}
+
+.discover-button {
+  background-color: white; /* White Background */
+  color: #0000FF; /* Blue Text */
+  padding: 10px 20px;
+  margin-top: 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.discover-button:hover {
+  background-color: #f3f3f3; /* Light grey background on hover */
+}
+
+.highlight {
+  color: #0000FF; /* Set the color of 'Yale' to blue */
+}
