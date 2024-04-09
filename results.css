@@ -1,0 +1,62 @@
+body, html {
+    margin: 0;
+    font-family: 'Nunito', sans-serif;
+    background: #faccd3; 
+  }
+  
+  .results-container {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .playlist-container {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px;
+  }
+  
+  .playlist-card {
+    background-color: #de9da7; 
+    border: 2px solid #7a7aca; 
+    padding: 20px;
+    border-radius: 10px;
+    width: calc(50% - 40px); 
+    margin: 10px;
+  }
+  
+  .playlist-card h2 {
+    color: #FFFFFF; 
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+  
+  .qr-code {
+    background-color: white; /* Placeholder for QR code */
+    width: 60%; 
+    padding: 20px; 
+    margin: auto; 
+  }
+  
+  .exit-instructions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+  }
+  
+  .instruction-box, .help-box {
+    background-color: #FFF; 
+    border: 2px solid #000; 
+    border-radius: 5px;
+    padding: 10px;
+    margin: 0 20px; 
+    display: inline-block; 
+  }
+  
+  .red-text {
+    color: red;
+    font-weight: bold;
+  }
+  
+
+  

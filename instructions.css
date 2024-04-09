@@ -1,0 +1,44 @@
+body, html {
+    margin: 0;
+    font-family: 'Nunito', sans-serif; 
+    background: #FFD700; 
+  }
+  
+  .instruction-container {
+    max-width: 600px; 
+    margin: 20px auto;
+    padding: 40px;
+    background: #FFFFFF; 
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
+    text-align: center; 
+  }
+  
+  .instruction-container h2 {
+    color: #FF8C00; 
+    margin-bottom: 20px;
+  }
+  
+  .instruction-container ul {
+    text-align: left;
+    list-style-position: inside; 
+  }
+  
+  .cta-button {
+    background-color: #FFA500; 
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    margin-top: 20px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  .cta-button:hover {
+    background-color: #FF4500; 
+  }
+  
+ 
+  
