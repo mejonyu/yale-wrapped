@@ -26,6 +26,47 @@ def redirect_page():
     token_info = create_spotify_oauth().get_access_token(code)
     # save the token info in session
     session[TOKEN_INFO] = token_info
+    return redirect(url_for('views.search_page', _external=True))
+
+@views.route("/search_page")
+def search_page():
+    return render_template("search.html")
+
+@views.route("/add_song_to_playlist")
+def add_song_to_playlist():
+    try: 
+        # get the token info from the session
+        token_info = get_token()
+    except:
+        # if the token info is not found, redirect the user to the login route
+        print('User not logged in')
+        return redirect(url_for('views.login', _external=True))
+
+    # create a Spotipy instance with the access token
+    print(token_info)
+    sp = spotipy.Spotify(auth=token_info['access_token'])
+    curr_user_info = sp.me()
+
+    args = request.args
+    song_title = args.get("song")
+
+    # get the user's playlists
+    playlists =  sp.current_user_playlists()["items"]
+    playlist_id = None
+
+    # find our playlist if created
+    for p in playlists:
+        if(p["name"] == "CPSC 484 Songs"):
+            playlist_id = p["id"]
+            break
+    
+    # create playlist if not found
+    if not playlist_id:
+        p = sp.user_playlist_create(user = sp.me()["id"], name = "CPSC 484 Songs")
+        playlist_id = p["id"]
+    
+    # add new song to the playlist
+    sp.playlist_add_items(playlist_id = playlist_id, items = [sp.search(song_title, limit=1, type="track")["tracks"]["items"][0]["uri"]])
     return redirect(url_for('views.profile_page', _external=True))
 
 @views.route("/profile_page")
@@ -39,10 +80,11 @@ def profile_page():
         return redirect(url_for('views.login', _external=True))
 
     # create a Spotipy instance with the access token
+    print(token_info)
     sp = spotipy.Spotify(auth=token_info['access_token'])
     curr_user_info = sp.me()
     
-    return render_template("index.html", 
+    return render_template("profile_page.html", 
         display_name = curr_user_info["display_name"],
         id = curr_user_info["id"],
         uri = curr_user_info["uri"],
