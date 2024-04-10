@@ -11,14 +11,12 @@
         <h1>Display your Spotify profile data</h1>
 
         <section id="profile">
-        <h2>Logged in as <span id="displayName"></span></h2>
-        <span id="avatar"></span>
+        <h2>Logged in as {{ display_name }} <span id="displayName"></span></h2>
+        <img id="avatar" width="200" src={{image}}/>
         <ul>
-            <li>User ID: <span id="id"></span></li>
-            <li>Email: <span id="email"></span></li>
-            <li>Spotify URI: <a id="uri" href="#"></a></li>
-            <li>Link: <a id="url" href="#"></a></li>
-            <li>Profile Image: <span id="imgUrl"></span></li>
+            <li>User ID: {{ id }}<span id="id"></span></li>
+            <li>Spotify URI: <a id="uri" href={{uri}}>{{ uri }}</a></li>
+            <li>Link: <a id="url" href={{url}}>{{ url }}</a></li>
         </ul>
         </section>
         <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
