@@ -1,4 +1,4 @@
-var host = "localhost:4444";
+var host = "cpsc484-02.stdusr.yale.internal:8888";
 $(document).ready(function() {
     frames.start();
 });
@@ -28,14 +28,16 @@ var frames = {
             return null;
         }
 
-        // Assuming left wrist index is 7 and right wrist index is 10
-        var leftWrist = frame.people[0].joints[7].position.x;
-        var rightWrist = frame.people[0].joints[10].position.x;
+        // Normalize by subtracting the pelvis position from the wrist positions
+        var pelvis_x = frame.people[0].joints[0].position.x;
+        var pelvis_y = frame.people[0].joints[0].position.y;
+        
+        var left_wrist_x_normalized = (frame.people[0].joints[7].position.x - pelvis_x) * -1;
+        var right_wrist_x_normalized = (frame.people[0].joints[10].position.x - pelvis_x) * -1;
 
-
-        if (leftWrist < -200) { 
+        if (left_wrist_x_normalized > 200) {  
             return 'exit'; 
-        } else if (rightWrist > 200) { 
+        } else if (right_wrist_x_normalized < -200) { 
             return 'continue'; 
         }
 
