@@ -30,7 +30,7 @@ var frames = {
 
         // Normalize by subtracting the pelvis position from the wrist positions
         var pelvis_x = frame.people[0].joints[0].position.x;
-        var pelvis_y = frame.people[0].joints[0].position.y;
+        var pelvis_y = frame.people[0].joints[0].position.y; 
         
         var left_wrist_x_normalized = (frame.people[0].joints[7].position.x - pelvis_x) * -1;
         var right_wrist_x_normalized = (frame.people[0].joints[10].position.x - pelvis_x) * -1;
