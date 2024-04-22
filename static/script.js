@@ -1,6 +1,6 @@
 // Home Page
 function startDiscovering() {
-    window.location.href = 'instructions.html';
+    window.location.href = 'http://127.0.0.1:8000/instructions';
   }
   
 // Instructions Page
@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
   const ctaButton = document.querySelector('.cta-button');
   
   ctaButton.addEventListener('click', () => {
-    window.location.href = 'http://127.0.0.1:8000/search_page';
+    window.location.href = 'http://127.0.0.1:8000/search';
   });
 });
 

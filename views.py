@@ -9,12 +9,16 @@ views = Blueprint(__name__, "views")
 # set the key for the token info in the session dictionary
 TOKEN_INFO = 'token_info'
 
-# handle login
+# # handle login
+# @views.route("/")
+# def login():
+#     auth_url = create_spotify_oauth().get_authorize_url()
+#     # redirect to auth URL
+#     return redirect(auth_url)
+
+# welcome page + handle token initiation
 @views.route("/")
-def login():
-    # auth_url = create_spotify_oauth().get_authorize_url()
-    # # redirect to auth URL
-    # return redirect(auth_url)
+def welcome_page():
     # hard coded token info with long lasting refresh token, soley for the sake of auto redirecting for cpsc 484 proj
     session[TOKEN_INFO] = {
         'access_token': 'BQBGmg81tC8b-a4FKwUotzsNWN75z2pWtIeF4CE_F1ZSK9ezF4Gj0LoFCLLphvC86Fhh_szh7lfMrKS6l6MsCUq4rWjLSO6DUptPDSS9i12E4mnLurHoWd5Gh20eKjaMEMej-rZmx6C_ey5-FsUTPkYRwh7rDyJ4s9sXdJili7iLaZl_DQn4LBtGLDy9AHlhIv_3FdBSfA2XnYsIJ-Oc0by2PlfVP_gC_KUwv-SZcLwoK4xV6PBAYA',
@@ -22,7 +26,11 @@ def login():
         'expires_in': 3600,
         'refresh_token': 'AQDq7ZdxaLrApwun45Le6OJAPRizMN0G3pQVDB5DkJHZpw14js4QHAEOtBF1CJhFSNNpXidJcP8PbWOQIZnmXsrJqqYbChArNOmDIJiyQ90DU4WfGP_MdGdaVYFZwhfHA-I', 'scope': 'user-library-read playlist-modify-public playlist-modify-private', 'token_type': 'Bearer'
     }
-    return redirect(url_for('views.search_page', _external=True))
+    return render_template("home.html")
+
+@views.route("/instructions")
+def instruction_page():
+    return render_template("instructions.html")
 
 @views.route("/redirect")
 def redirect_page():
@@ -34,9 +42,9 @@ def redirect_page():
     token_info = create_spotify_oauth().get_access_token(code)
     # save the token info in session
     session[TOKEN_INFO] = token_info
-    return redirect(url_for('views.search_page', _external=True))
+    return redirect(url_for('views.welcome_page', _external=True))
 
-@views.route("/search_page")
+@views.route("/search")
 def search_page():
     return render_template("search.html")
 
@@ -69,34 +77,38 @@ def add_song_to_playlist():
     
     # create playlist if not found
     if not playlist_id:
-        p = sp.user_playlist_create(user = sp.me()["id"], name = "CPSC 484 Songs")
+        p = sp.user_playlist_create(user = sp.me()["id"], name = "Bulldog Beats")
         playlist_id = p["id"]
     print(sp.search(song_title, limit=1, type="track")["tracks"]["items"][0])
     # add new song to the playlist
     sp.playlist_add_items(playlist_id = playlist_id, items = [sp.search(song_title, limit=1, type="track")["tracks"]["items"][0]["uri"]])
-    return redirect(url_for('views.profile_page', _external=True))
+    return redirect(url_for('views.results_page', _external=True))
 
-@views.route("/profile_page")
-def profile_page():
-    try: 
-        # get the token info from the session
-        token_info = get_token()
-    except:
-        # if the token info is not found, redirect the user to the login route
-        print('User not logged in')
-        return redirect(url_for('views.login', _external=True))
+@views.route("results")
+def results_page():
+    return render_template("results.html")
 
-    # create a Spotipy instance with the access token
-    sp = spotipy.Spotify(auth=token_info['access_token'])
-    curr_user_info = sp.me()
+# @views.route("/profile_page")
+# def profile_page():
+#     try: 
+#         # get the token info from the session
+#         token_info = get_token()
+#     except:
+#         # if the token info is not found, redirect the user to the login route
+#         print('User not logged in')
+#         return redirect(url_for('views.login', _external=True))
+
+#     # create a Spotipy instance with the access token
+#     sp = spotipy.Spotify(auth=token_info['access_token'])
+#     curr_user_info = sp.me()
     
-    return render_template("profile_page.html", 
-        display_name = curr_user_info["display_name"],
-        id = curr_user_info["id"],
-        uri = curr_user_info["uri"],
-        url = curr_user_info["external_urls"]["spotify"],
-        image = curr_user_info["images"][1]["url"]
-        )
+#     return render_template("profile_page.html", 
+#         display_name = curr_user_info["display_name"],
+#         id = curr_user_info["id"],
+#         uri = curr_user_info["uri"],
+#         url = curr_user_info["external_urls"]["spotify"],
+#         image = curr_user_info["images"][1]["url"]
+#     )
 
 def create_spotify_oauth():
     return SpotifyOAuth(
