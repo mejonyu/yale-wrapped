@@ -1,4 +1,4 @@
-var host = "localhost:4444";
+var host = "cpsc484-02.stdusr.yale.internal:8888";
 $(document).ready(function() {
     frames.start();
 });
