@@ -15,6 +15,7 @@ def login():
     # auth_url = create_spotify_oauth().get_authorize_url()
     # # redirect to auth URL
     # return redirect(auth_url)
+    # hard coded token info with long lasting refresh token, soley for the sake of auto redirecting for cpsc 484 proj
     session[TOKEN_INFO] = {
         'access_token': 'BQBGmg81tC8b-a4FKwUotzsNWN75z2pWtIeF4CE_F1ZSK9ezF4Gj0LoFCLLphvC86Fhh_szh7lfMrKS6l6MsCUq4rWjLSO6DUptPDSS9i12E4mnLurHoWd5Gh20eKjaMEMej-rZmx6C_ey5-FsUTPkYRwh7rDyJ4s9sXdJili7iLaZl_DQn4LBtGLDy9AHlhIv_3FdBSfA2XnYsIJ-Oc0by2PlfVP_gC_KUwv-SZcLwoK4xV6PBAYA',
         'expires_at': 1713752485,
