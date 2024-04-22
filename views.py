@@ -12,16 +12,24 @@ TOKEN_INFO = 'token_info'
 # handle login
 @views.route("/")
 def login():
-    auth_url = create_spotify_oauth().get_authorize_url()
-    # redirect to auth URL
-    print(auth_url)
-    return redirect(auth_url)
+    # auth_url = create_spotify_oauth().get_authorize_url()
+    # # redirect to auth URL
+    # return redirect(auth_url)
+    # hard coded token info with long lasting refresh token, soley for the sake of auto redirecting for cpsc 484 proj
+    session[TOKEN_INFO] = {
+        'access_token': 'BQBGmg81tC8b-a4FKwUotzsNWN75z2pWtIeF4CE_F1ZSK9ezF4Gj0LoFCLLphvC86Fhh_szh7lfMrKS6l6MsCUq4rWjLSO6DUptPDSS9i12E4mnLurHoWd5Gh20eKjaMEMej-rZmx6C_ey5-FsUTPkYRwh7rDyJ4s9sXdJili7iLaZl_DQn4LBtGLDy9AHlhIv_3FdBSfA2XnYsIJ-Oc0by2PlfVP_gC_KUwv-SZcLwoK4xV6PBAYA',
+        'expires_at': 1713752485,
+        'expires_in': 3600,
+        'refresh_token': 'AQDq7ZdxaLrApwun45Le6OJAPRizMN0G3pQVDB5DkJHZpw14js4QHAEOtBF1CJhFSNNpXidJcP8PbWOQIZnmXsrJqqYbChArNOmDIJiyQ90DU4WfGP_MdGdaVYFZwhfHA-I', 'scope': 'user-library-read playlist-modify-public playlist-modify-private', 'token_type': 'Bearer'
+    }
+    return redirect(url_for('views.search_page', _external=True))
 
 @views.route("/redirect")
 def redirect_page():
     session.clear()
     # get auth code from request params
     code = request.args.get('code')
+
     # access and refresh tokens
     token_info = create_spotify_oauth().get_access_token(code)
     # save the token info in session
@@ -43,7 +51,6 @@ def add_song_to_playlist():
         return redirect(url_for('views.login', _external=True))
 
     # create a Spotipy instance with the access token
-    print(token_info)
     sp = spotipy.Spotify(auth=token_info['access_token'])
     curr_user_info = sp.me()
 
@@ -64,7 +71,7 @@ def add_song_to_playlist():
     if not playlist_id:
         p = sp.user_playlist_create(user = sp.me()["id"], name = "CPSC 484 Songs")
         playlist_id = p["id"]
-    
+    print(sp.search(song_title, limit=1, type="track")["tracks"]["items"][0])
     # add new song to the playlist
     sp.playlist_add_items(playlist_id = playlist_id, items = [sp.search(song_title, limit=1, type="track")["tracks"]["items"][0]["uri"]])
     return redirect(url_for('views.profile_page', _external=True))
@@ -80,7 +87,6 @@ def profile_page():
         return redirect(url_for('views.login', _external=True))
 
     # create a Spotipy instance with the access token
-    print(token_info)
     sp = spotipy.Spotify(auth=token_info['access_token'])
     curr_user_info = sp.me()
     
@@ -109,7 +115,7 @@ def get_token():
     # check if the token is expired and refresh it if necessary
     curr = int(time.time())
 
-    is_expired = token_info['expires_at'] - curr < 60
+    is_expired = token_info['expires_at'] - curr < 6000
     if(is_expired):
         spotify_oauth = create_spotify_oauth()
         token_info = spotify_oauth.refresh_access_token(token_info['refresh_token'])
