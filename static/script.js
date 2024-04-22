@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
   const ctaButton = document.querySelector('.cta-button');
   
   ctaButton.addEventListener('click', () => {
-    window.location.href = 'selection.html';
+    window.location.href = 'http://127.0.0.1:8000/search_page';
   });
 });
 
