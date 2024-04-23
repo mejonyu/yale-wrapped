@@ -2,11 +2,12 @@
 
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
-
-var host = "cpsc484-02.stdusr.yale.internal:8888";
+var host = "cpsc484-01.stdusr.yale.internal:8888";
 $(document).ready(function() {
   sp2tx.start();
 });
+
+// call sp2tx on search page
 
 var sp2tx = {
   socket: null,
@@ -19,6 +20,8 @@ var sp2tx = {
       if (text !== "") {
           console.log("Text received: "+text);
           recommendSong(text);
+          // Display as text box on results page
+
       }
     }
   }
