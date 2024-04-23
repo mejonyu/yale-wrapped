@@ -1,4 +1,3 @@
-// Configuration for the WebSocket connection
 var host = "cpsc484-02.stdusr.yale.internal:8888";
 $(document).ready(function() {
     frames.start();
@@ -20,7 +19,7 @@ var frames = {
         }
     },
 
-    gget_left_wrist_command: function (frame) {
+    get_left_wrist_command: function (frame) {
         var command = null;
         if (frame.people.length < 1) {
           return command;

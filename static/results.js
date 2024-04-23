@@ -1,4 +1,3 @@
-// Configuration for the WebSocket connection
 var host = "cpsc484-02.stdusr.yale.internal:8888";
 $(document).ready(function() {
     frames.start();
@@ -15,14 +14,14 @@ var frames = {
             var handCommand = frames.get_left_wrist_command(frameData);
 
             if (handCommand === 'left') {
-                window.location.href = 'home.html'; // Redirects to the home page
+                window.location.href = 'http://127.0.0.1:8000/home';
             } else if (handCommand === 'right') {
-                // window.location.href = 'instructions.html';
+                window.location.href = 'http://127.0.0.1:8000/search';
             }
         }
     },
 
-    gget_left_wrist_command: function (frame) {
+    get_left_wrist_command: function (frame) {
         var command = null;
         if (frame.people.length < 1) {
           return command;
