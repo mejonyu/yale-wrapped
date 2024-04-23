@@ -31,8 +31,9 @@ const model = genAI.getGenerativeModel({model: "gemini-pro"});
 
 
 async function recommendSong(text){
-  const prompt = "Recommend one song that evokes a similar mood and/or has a similar genre and style to the song: "+text+"." + 
-                  "Please make sure to state the name of the song and its artist in your response. " +
+  const prompt = "Recommend one song available on Spotify that evokes a similar mood and/or has a similar genre and style to the song: "+text+"." +
+                  "The provided song may not be the full, correct name of the intended song." +
+                  "Please make sure to state the full, correct name of the song and its artist as shown on Spotify in your response, matching as closely to the user input as possible" +
                   "Briefly justify this choice in a friendly and exciting way in no more than 45 words." +
                   "If "+text+" is not a song, please ask the user to try again with the name of a song."
   console.log("Prompt:", prompt)
