@@ -1,24 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Instructions</title>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../static/instructions.css">
-</head>
-<body>
+<html lang="en" class="h-100">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Document</title>
+      <!-- Bootstrap CSS -->
+      <link href="../static/assets/dist/css/bootstrap.min.css" rel="stylesheet">
+      <link href="../static/instructions.css" rel="stylesheet">
+  </head>
+  <body class="d-flex h-100 text-center text-white bg-dark">
+      <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+          <header class="mb-auto">
+          </header>
 
-<div class="instruction-container">
-  <h2>HOW DOES THIS WORK?</h2>
-  <ul>
-    <li>Vote for your favorite song in each given genre on the next page by swiping your arms left or right. Raise your hand high to undo.</li>
-    <li>See your curated playlist & what others are listening to!</li>
-  </ul>
-  <button class="cta-button">Raise your hand if you want in!</button>
-</div>
+          <main class="px-3">
+            <h1>How does this work?</h1>
+            <p class="lead">Raise your <em class="fw-bold text-danger">right</em> hand to <em class="fw-bold">add</em> your own song to the playlist.</p>
+            <p class="lead">Raise your <em class="fw-bold text-primary">left</em> hand to <em class="fw-bold">see</em> the playlist.</p>
+            <button id="cta-button" class="btn btn-lg btn-secondary fw-bold border-white bg-white">Start!</button>
+          </main>
 
-<script src="../static/script.js"></script>
-
-</body>
+          <footer class="mt-auto text-white-50">
+              <p>Playlist generator for <a href="https://cpsc484-584-hci.gitlab.io/s24/project/" class="text-white">CPSC 484</a>, found <a href="https://open.spotify.com/user/jonyu02?si=79a80282bd224b51" class="text-white">@mejonyu</a> on spotify.</p>
+          </footer>
+          
+      </div>
+      <script src="../static/script.js"></script>
+  </body>
 </html>
