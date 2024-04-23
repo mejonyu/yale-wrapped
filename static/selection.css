@@ -1,0 +1,103 @@
+body, html {
+    margin: 0;
+    font-family: 'Nunito', sans-serif;
+    background: #c1eac7;
+  }
+  
+  .selection-container {
+    text-align: center;
+  }
+  
+  .song-options {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px;
+  }
+  
+  .song-card {
+    border: 2px solid #0000FF;
+    padding: 20px;
+    border-radius: 10px;
+    width: 45%;
+  }
+  
+  .swipe-right h2, .swipe-left h2 {
+    margin: 0;
+    background-color: #599159;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+  }
+  
+  .qr-code {
+    margin: 20px auto;
+    width: 50%;
+    height: 100px;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .footer-option {
+    display: inline-block;
+    margin: 20px;
+  }
+  
+  .circle {
+    background: #599159;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    color: #000;
+    font-size: 15px;
+    margin-right: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .footer-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+  }
+
+  .instruction-box {
+    border: 2px solid #000;
+    padding: 10px 20px;
+    border-radius: 10px;
+    display: inline-block;
+    margin: 0 100px;
+  }
+  
+  .instruction-text {
+    margin: 0;
+    color: #000;
+    font-size: 25px;
+  }
+  
+  .red-text {
+    color: red;
+    font-weight: bold;
+  }
+  
+  .help-box {
+    border: 2px solid #000;
+    background: #df8e8e;
+    padding: 10px 20px;
+    border-radius: 10px;
+    display: inline-block;
+    margin-left: 20px;
+  }
+  
+  .help-text {
+    margin: 0;
+    color: #000;
+    font-size: 15px;
+  }
+  
+  
+  
