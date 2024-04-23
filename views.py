@@ -71,7 +71,7 @@ def add_song_to_playlist():
 
     # find our playlist if created
     for p in playlists:
-        if(p["name"] == "CPSC 484 Songs"):
+        if(p["name"] == "Bulldog Beats"):
             playlist_id = p["id"]
             break
     
