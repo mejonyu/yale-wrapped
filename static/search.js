@@ -1,3 +1,4 @@
+// Configuration for the WebSocket connection
 const form = document.getElementById("song-form");
 const songInput = document.getElementById("song");
 
