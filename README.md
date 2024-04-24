@@ -37,7 +37,8 @@ Because the microphone is wired, it must be physically attached to the display s
 ## Collaboration Record
 Jonathan Yu - jwy2: Worked on routing and implmented the Spotify Web API call logic. Integrated motion sensor functionality into the application. Also styled web pages.
 
-Mike Masamvu - mam462
+Mike Masamvu - mam462: I worked on the individual webpages using HTML, CSS and javascript. I also worked 
+on the motion and integrated the motion with the webpages. I also worked on integrating the motion and the speech to text together. 
 
 Michelle Zheng - mz539: I worked primarily on researching the policies and implementing the Gemini API by Google to create and integrate a customized instance of the Gemini LLM to respond to user input. I used this in conjunction with the provided speech-to-text function (via OpenAI's Whisper) from the display system's microphone. I also researched different ways of wording and structuring the preamble prompt for Gemini to provide the best response. This involved looking into how large language models operate, including their transformer architecture, attention mechanisms, word-vector representations, tokenization, as well as experimenting with prompting directly into the public Gemini interface.  
 
