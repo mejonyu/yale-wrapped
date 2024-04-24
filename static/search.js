@@ -3,5 +3,5 @@ const songInput = document.getElementById("song");
 
 form.addEventListener("submit", function (e) {
     e.preventDefault();
-    window.location = 'http://127.0.0.1:8000/add_song_to_playlist?song=' + songInput.value;
+    window.location = 'http://0.0.0.0:5017/add_song_to_playlist?song=' + songInput.value;
 });
