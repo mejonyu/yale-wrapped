@@ -1,2 +1,3 @@
 #!/bin/sh
-python3 app.py
+pipenv install
+pipenv run python app.py
