@@ -20,21 +20,20 @@ var sp2tx = {
       if (text !== "") {
           console.log("Text received: "+text);
           recommendSong(text);
-          // Display as text box on results page
-
       }
     }
   }
 };
 
 
-const gemini_api_key = 'hidden-api-key';
+const gemini_api_key = 'AIzaSyD-XB0o1K4WwvLreDnaeQMzUtOc3jSFGb0';
 const genAI = new GoogleGenerativeAI(gemini_api_key);
 const model = genAI.getGenerativeModel({model: "gemini-pro"});
 
 
 async function recommendSong(text){
-  const prompt = "Recommend one song available on Spotify that evokes a similar mood and/or has a similar genre and style to the song: "+text+"." +
+  const prompt = "You are now an expert music recommender on all songs on Spotify. I will tip you $100 for high performance." +
+                  "Recommend one song available on Spotify that evokes a similar mood and/or has a similar genre and style to the song: "+text+"." +
                   "The provided song may not be the full, correct name of the intended song." +
                   "Please make sure to state the full, correct name of the song and its artist as shown on Spotify in your response, matching as closely to the user input as possible" +
                   "Briefly justify this choice in a friendly and exciting way in no more than 45 words." +
