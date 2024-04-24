@@ -1,36 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>App Homepage</title>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../static/home.css">
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="../static/home.js"></script>
-</head>
-<body>
+<html lang="en" class="h-100">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Document</title>
+      <!-- Bootstrap CSS -->
+      <link href="../static/assets/dist/css/bootstrap.min.css" rel="stylesheet">
+      <link href="../static/home.css" rel="stylesheet">
+  </head>
+  <body class="d-flex h-100 text-center text-white bg-dark">
+      <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+          <header class="mb-auto">
+          </header>
 
-<div class="bg-color">
-  <div>
-    <h1 class="title">
-        What are 
-        <span class="highlight">Yale</span> 
-        students listening to on campus?
-    </h1>
-    <div class="content-box">
-      START <br> DISCOVERING
-      <br>
-      (Raise that hand!)
-    </div>
-    <button class="discover-button">Start Discovering</button>
-  </div>
-</div>
+          <main class="px-3">
+            <h1>Which songs are <em class="fw-bold text-primary">Yalies</em> listening to?</h1>
+            <p class="lead">Raise your <em class="fw-bold text-danger">right</em> hand to see/add your own song to the playlist.</p>
+            <img src="../static/assets/playlist_spotify_code.jpg" width="50%" alt="Spotify Code" class="img-thumbnail img-fluid">
+            <br />
+            <button class="btn btn-lg btn-secondary fw-bold border-white bg-white mt-4" onclick="startDiscovering()">Start!</button>
+          </main>
 
-<script>
-  $(document).ready(function() {
-  });
-</script>
-
-</body>
+          <footer class="mt-auto text-white-50">
+              <p>Playlist generator for <a href="https://cpsc484-584-hci.gitlab.io/s24/project/" class="text-white">CPSC 484</a>, found <a href="https://open.spotify.com/user/jonyu02?si=79a80282bd224b51" class="text-white">@mejonyu</a> on spotify.</p>
+          </footer>
+          
+      </div>
+      <script src="../static/script.js"></script>
+  </body>
 </html>

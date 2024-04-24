@@ -7,8 +7,6 @@
         <!-- Bootstrap CSS -->
         <link href="../static/assets/dist/css/bootstrap.min.css" rel="stylesheet">
         <link href="../static/search.css" rel="stylesheet">
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script src="../static/search.js"></script>
     </head>
     <body class="d-flex h-100 text-center text-white bg-dark">
         <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
@@ -19,7 +17,7 @@
                 <h1>Add a song to the playlist!</h1>
                 <p class="lead">Search for a song and artist name using the microphone:</p>
                 <form id="song-form">
-                    <div class="mb-3">
+                    <div class="mb-4">
                         <input type="text" class="form-control" id="song">
                     </div>
                     <button type="submit" class="btn btn-lg btn-secondary fw-bold border-white bg-white">Add Song</button>
@@ -33,11 +31,6 @@
             </footer>
             
         </div>
-        
-        <script>
-            $(document).ready(function() {
-            });
-        </script>
-        
+        <script src="../static/search.js"></script>
     </body>
 </html>
