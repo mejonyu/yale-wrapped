@@ -13,13 +13,14 @@ var frames = {
     start: function() {
         var url = "ws://" + host + "/frames";
         frames.socket = new WebSocket(url);
+
         frames.socket.onmessage = function(event) {
+            console.log("***");
             var frameData = JSON.parse(event.data);
             var handCommand = frames.get_command(frameData);
             if (handCommand === 'left' || handCommand === 'right') {
                 window.location.href = 'http://0.0.0.0:5017/instructions';
             }
-            sleep(1000);
         }
     },
 

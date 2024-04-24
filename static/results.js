@@ -1,11 +1,12 @@
-var host = "cpsc484-02.stdusr.yale.internal:8888";
-$(document).ready(function() {
-    frames.start();
-});
-
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
+
+var host = "cpsc484-02.stdusr.yale.internal:8888";
+$(document).ready(async function() {
+    await sleep(1000);
+    frames.start();
+});
 
 var frames = {
     socket: null,
