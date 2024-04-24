@@ -14,9 +14,7 @@ var frames = {
             var handCommand = frames.get_left_wrist_command(frameData);
 
             if (handCommand === 'left') {
-                window.location.href = 'http://127.0.0.1:8000/home';
-            } else if (handCommand === 'right') {
-                window.location.href = 'http://127.0.0.1:8000/search';
+                window.location.href = 'http://0.0.0.0:5017';
             }
         }
     },
@@ -24,7 +22,7 @@ var frames = {
     get_left_wrist_command: function (frame) {
         var command = null;
         if (frame.people.length < 1) {
-          return command;
+            return command;
         }
     
         // Normalize by subtracting the root (pelvis) joint coordinates
@@ -41,7 +39,7 @@ var frames = {
         var right_wrist_z = (frame.people[0].joints[14].position.z - pelvis_z) * -1;
 
         if (left_wrist_z < 100 && right_wrist_z < 100) {
-          return command;
+            return command;
         }
 
         if (right_wrist_x > 200 && right_wrist_y > 500) {
@@ -51,6 +49,6 @@ var frames = {
         }
     
         return command;
-      }
+    }
 };
 

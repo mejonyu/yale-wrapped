@@ -11,18 +11,18 @@ var frames = {
         frames.socket = new WebSocket(url);
         frames.socket.onmessage = function(event) {
             var frameData = JSON.parse(event.data);
-            var handCommand = frames.get_left_wrist_command(frameData);
+            var handCommand = frames.get_command(frameData);
 
             if (handCommand === 'left' || handCommand === 'right') {
-                window.location.href = 'http://127.0.0.1:8000/instructions';
+                window.location.href = 'http://0.0.0.0:5017/instructions';
             }
         }
     },
 
-    get_left_wrist_command: function (frame) {
+    get_command: function (frame) {
         var command = null;
         if (frame.people.length < 1) {
-          return command;
+            return command;
         }
     
         // Normalize by subtracting the root (pelvis) joint coordinates
@@ -39,7 +39,7 @@ var frames = {
         var right_wrist_z = (frame.people[0].joints[14].position.z - pelvis_z) * -1;
 
         if (left_wrist_z < 100 && right_wrist_z < 100) {
-          return command;
+            return command;
         }
 
         if (right_wrist_x > 200 && right_wrist_y > 500) {
@@ -49,6 +49,6 @@ var frames = {
         }
     
         return command;
-      }
+    }
 };
 
