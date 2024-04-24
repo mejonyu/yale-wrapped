@@ -3,6 +3,10 @@ $(document).ready(function() {
     frames.start();
 });
 
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 var frames = {
     socket: null,
 
@@ -16,6 +20,7 @@ var frames = {
             if (handCommand === 'left') {
                 window.location.href = 'http://0.0.0.0:5017';
             }
+            sleep(1000);
         }
     },
 

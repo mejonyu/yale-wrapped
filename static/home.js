@@ -1,3 +1,7 @@
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 var host = "cpsc484-02.stdusr.yale.internal:8888";
 $(document).ready(function() {
     frames.start();
@@ -12,10 +16,10 @@ var frames = {
         frames.socket.onmessage = function(event) {
             var frameData = JSON.parse(event.data);
             var handCommand = frames.get_command(frameData);
-
             if (handCommand === 'left' || handCommand === 'right') {
                 window.location.href = 'http://0.0.0.0:5017/instructions';
             }
+            sleep(1000);
         }
     },
 

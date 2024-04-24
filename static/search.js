@@ -2,12 +2,16 @@
 const form = document.getElementById("song-form");
 const songInput = document.getElementById("song");
 
-form.addEventListener("submit", function (e) {
-    e.preventDefault();
-    window.location = 'http://0.0.0.0:5017/add_song_to_playlist?song=' + songInput.value;
-});
+// form.addEventListener("submit", function (e) {
+//     e.preventDefault();
+//     window.location = 'http://0.0.0.0:5017/add_song_to_playlist?song=' + songInput.value;
+// });
 
 // motion logic
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 var host = "cpsc484-02.stdusr.yale.internal:8888";
 $(document).ready(function() {
     frames.start();
@@ -24,10 +28,11 @@ var frames = {
             var handCommand = frames.get_left_wrist_command(frameData);
 
             if (handCommand === 'right') {
-                form.submit();
-            } else if (handcommand === 'left') {
-                songInput.innerHTML = "";
+                window.location = 'http://0.0.0.0:5017/add_song_to_playlist?song=' + document.getElementById("song").value;
+            } else if (handCommand === 'left') {
+                document.getElementById("song").value = "";
             }
+            sleep(1000);
         }
     },
 

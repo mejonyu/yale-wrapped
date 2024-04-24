@@ -65,6 +65,10 @@ def add_song_to_playlist():
     args = request.args
     song_title = args.get("song")
 
+    # if empty song submitted, redirect to search_page
+    if not song_title:
+        return redirect(url_for('views.search_page', _external=True))
+
     # get the user's playlists
     playlists =  sp.current_user_playlists()["items"]
     playlist_id = None
