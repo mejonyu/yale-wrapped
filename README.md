@@ -35,7 +35,7 @@ Because the microphone is wired, it must be physically attached to the display s
 
 
 ## Collaboration Record
-Jonathan Yu - jwy2: Worked on routing and implmented the Spotify Web API call logic. Integrated motion sensor functionality into the application. Also styled web pages.
+Jonathan Yu - jwy2: Worked on routing and implmented the Spotify Web API call logic. Integrated motion sensor functionality into the application, specifically timeout delays. Also styled web pages.
 
 Mike Masamvu - mam462: I worked on the individual webpages using HTML, CSS and javascript. I also worked 
 on the motion and integrated the motion with the webpages. I also worked on integrating the motion and the speech to text together. 
