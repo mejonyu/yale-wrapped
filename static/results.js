@@ -4,7 +4,7 @@ function sleep(ms) {
 
 var host = "cpsc484-02.stdusr.yale.internal:8888";
 $(document).ready(async function() {
-    await sleep(1000);
+    await sleep(2000);
     frames.start();
 });
 
@@ -16,16 +16,15 @@ var frames = {
         frames.socket = new WebSocket(url);
         frames.socket.onmessage = function(event) {
             var frameData = JSON.parse(event.data);
-            var handCommand = frames.get_left_wrist_command(frameData);
+            var handCommand = frames.get_command(frameData);
 
             if (handCommand === 'left') {
-                window.location.href = 'http://0.0.0.0:5017';
+                window.location.href = 'http://0.0.0.0:5017/';
             }
-            sleep(1000);
         }
     },
 
-    get_left_wrist_command: function (frame) {
+    get_command: function (frame) {
         var command = null;
         if (frame.people.length < 1) {
             return command;

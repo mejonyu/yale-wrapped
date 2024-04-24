@@ -4,7 +4,7 @@ function sleep(ms) {
 
 var host = "cpsc484-02.stdusr.yale.internal:8888";
 $(document).ready(async function() {
-    await sleep(1000);
+    await sleep(2000);
     frames.start();
 });
 

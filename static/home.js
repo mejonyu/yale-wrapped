@@ -3,7 +3,8 @@ function sleep(ms) {
 }
 
 var host = "cpsc484-02.stdusr.yale.internal:8888";
-$(document).ready(function() {
+$(document).ready(async function() {
+    await sleep(2000);
     frames.start();
 });
 
@@ -18,7 +19,7 @@ var frames = {
             console.log("***");
             var frameData = JSON.parse(event.data);
             var handCommand = frames.get_command(frameData);
-            if (handCommand === 'left' || handCommand === 'right') {
+            if (handCommand === 'right') {
                 window.location.href = 'http://0.0.0.0:5017/instructions';
             }
         }

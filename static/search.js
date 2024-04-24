@@ -14,7 +14,7 @@ function sleep(ms) {
 
 var host = "cpsc484-02.stdusr.yale.internal:8888";
 $(document).ready(async function() {
-    await sleep(1000);
+    await sleep(2000);
     frames.start();
 });
 
@@ -30,8 +30,10 @@ var frames = {
                 var frameData = JSON.parse(event.data);
                 var handCommand = frames.get_left_wrist_command(frameData);
                 if (handCommand === 'right') {
-                    window.location = 'http://0.0.0.0:5017/add_song_to_playlist?song=' + document.getElementById("song").value;
-                    submitted = true;
+                    if (document.getElementById("song").value) {
+                        window.location = 'http://0.0.0.0:5017/add_song_to_playlist?song=' + document.getElementById("song").value;
+                        submitted = true;
+                    }
                 } else if (handCommand === 'left') {
                     document.getElementById("song").value = "";
                 }
