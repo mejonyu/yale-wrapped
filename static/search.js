@@ -22,18 +22,22 @@ var frames = {
     socket: null,
 
     start: function() {
+        var submitted = false;
         var url = "ws://" + host + "/frames";
         frames.socket = new WebSocket(url);
         frames.socket.onmessage = function(event) {
-            var frameData = JSON.parse(event.data);
-            var handCommand = frames.get_left_wrist_command(frameData);
-
-            if (handCommand === 'right') {
-                window.location = 'http://0.0.0.0:5017/add_song_to_playlist?song=' + document.getElementById("song").value;
-            } else if (handCommand === 'left') {
-                document.getElementById("song").value = "";
+            if (!submitted) {
+                var frameData = JSON.parse(event.data);
+                var handCommand = frames.get_left_wrist_command(frameData);
+                if (handCommand === 'right') {
+                    window.location = 'http://0.0.0.0:5017/add_song_to_playlist?song=' + document.getElementById("song").value;
+                    submitted = true;
+                } else if (handCommand === 'left') {
+                    document.getElementById("song").value = "";
+                }
+            } else {
+                window.location = 'http://0.0.0.0:5017/results';
             }
-            sleep(1000);
         }
     },
 
